@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<bean id="helloWorld" class="com.wenrui.spring.beans.HelloWorld">
+       <property name="name" value="spring"></property>
+</bean>
+       <bean id="car" class="com.wenrui.spring.beans.Car">
+              <constructor-arg value="Audi"></constructor-arg>
+              <constructor-arg value="AudiCSE"></constructor-arg>
+              <constructor-arg value="1500"></constructor-arg>
+              <constructor-arg value="234"></constructor-arg>
+       </bean>
+
+       <bean id="person" class="com.wenrui.spring.beans.Person" p:name="DSE" p:age="45" p:car="car">
+
+       </bean>
+
+       <bean id="personlist" class="com.wenrui.spring.beans.PersonList">
+              <constructor-arg value="TOM"></constructor-arg>
+              <constructor-arg value="16"></constructor-arg>
+              <constructor-arg >
+                     <list>
+                            <ref bean="car"></ref>
+                            <ref bean="car"></ref>
+                            <ref bean="car"></ref>
+                     </list>
+              </constructor-arg>
+       </bean>
+
+       <bean id="personmap" class="com.wenrui.spring.beans.PersonMap">
+              <property name="name" value="JIM"></property>
+              <property name="age" value="24"></property>
+              <property name="cars">
+                     <map>
+                            <entry key="AA" value-ref="car"></entry>
+                            <entry key="bb" value-ref="car"></entry>
+                     </map>
+              </property>
+       </bean>
+
+       <bean id="datasource" class="com.wenrui.spring.beans.DataSource">
+              <property name="properties">
+                     <props>
+                            <prop key="name">fuck</prop>
+                            <prop key="age">12</prop>
+                            <prop key="url">baidu.com</prop>
+                            <prop key="password">123444</prop>
+                     </props>
+              </property>
+       </bean>
+
+       <util:list id="cars">
+              <ref bean="car"/>
+              <ref bean="car"/>
+       </util:list>
+
+       <bean id="person4" class="com.wenrui.spring.beans.PersonList">
+              <constructor-arg value="TOM"></constructor-arg>
+              <constructor-arg value="16"></constructor-arg>
+              <constructor-arg ref="cars"> </constructor-arg>
+       </bean>
+</beans>
